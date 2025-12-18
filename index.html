@@ -5,42 +5,50 @@
     <title>Courier Weekly Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Courier Weekly Online — Independent reporting from the world of logistics, legends, and lost parcels.">
+
     <style>
-        body {
+        /* Page baseline */
+        html, body {
             margin: 0;
             padding: 0;
             background-color: #0f0f0f;
             color: #e0e0e0;
             font-family: Georgia, "Times New Roman", serif;
+            min-height: 100vh;
+        }
+
+        /* Sticky-footer layout */
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main content wrapper pushes footer down */
+        .page {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 40px 20px;
         }
 
         .container {
             max-width: 700px;
             text-align: center;
-            padding: 40px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            padding: 20px;
         }
 
         h2 {
             font-size: 1.2rem;
             font-weight: normal;
             color: #b0b0b0;
-            margin-bottom: 40px;
+            margin: 10px 0 35px;
         }
 
         p {
             font-size: 1rem;
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin: 0 0 18px;
             color: #c8c8c8;
         }
 
@@ -48,11 +56,11 @@
             width: 60px;
             height: 2px;
             background-color: #666;
-            margin: 30px auto;
+            margin: 28px auto;
         }
 
-        .footer {
-            margin-top: 40px;
+        .footer-note {
+            margin-top: 35px;
             font-size: 0.85rem;
             color: #888;
         }
@@ -65,45 +73,69 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* Bottom footer (sticky at bottom of screen) */
+        footer {
+            padding: 18px 0 22px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        footer img {
+            max-width: 160px;
+            height: auto;
+            opacity: 0.85;
+        }
+
+        footer p {
+            font-size: 0.85em;
+            color: #777;
+            margin: 10px 0 0;
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-       <img src="assets/courier_weekly_logo.png"
-     alt="The Courier Weekly"
-     style="max-width:100%; height:auto; margin-bottom:20px;">
-        <h2>Independent reporting from the world of logistics</h2>
+    <!-- MAIN CONTENT -->
+    <div class="page">
+        <div class="container">
 
-        <div class="divider"></div>
+            <!-- Masthead -->
+            <img src="assets/courier_weekly_logo.png"
+                 alt="The Courier Weekly"
+                 style="max-width:100%; height:auto; margin-bottom:18px;">
 
-        <p>
-            From legendary couriers and lost parcels to corporate rivalries and
-            whispered stories from the depots — <em>Courier Weekly Online</em> documents
-            the moments that shaped the delivery world.
-        </p>
+            <h2>Independent reporting from the world of logistics</h2>
 
-        <p>
-            Archives are currently under review.
-            Selected reports will be published soon.
-        </p>
+            <div class="divider"></div>
 
-        <div class="divider"></div>
+            <p>
+                From legendary couriers and lost parcels to corporate rivalries and
+                whispered stories from the depots — <em>Courier Weekly Online</em> documents
+                the moments that shaped the delivery world.
+            </p>
 
-        <p class="footer">
-            An in-universe publication from<br>
-            <a href="https://lucky7gamestudio.com" target="_blank">Lucky 7 Game Studio</a>
-        </p>
+            <p>
+                Archives are currently under review.
+                Selected reports will be published soon.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="footer-note">
+                An in-universe publication from<br>
+                <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">Lucky 7 Game Studio</a>
+            </p>
+
+        </div>
     </div>
 
-<footer style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #ccc; text-align: center;">
-    <img src="assets/lucky_7_games_logo.png"
-         alt="Lucky 7 Game Studio"
-         style="max-width: 160px; opacity: 0.85;">
-    <p style="font-size: 0.85em; color: #666; margin-top: 10px;">
-        Published by Lucky 7 Game Studio
-    </p>
-</footer>
+    <!-- STICKY BOTTOM FOOTER -->
+    <footer>
+        <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
+        <p>Published by Lucky 7 Game Studio</p>
+    </footer>
 
 </body>
 </html>
