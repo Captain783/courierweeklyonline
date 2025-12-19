@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Weekly — “High-Vis, Higher Stakes”</title>
+  <meta name="description" content="Courier Weekly: Local news, investigations, and community updates." />
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --paper:#0f1217;
+      --card:#121722;
+      --ink:#e9eef6;
+      --muted:#b4c0d6;
+      --soft:#7f8aa3;
+      --line:#22304a;
+      --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
+      --radius:18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --max: 1100px;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.20), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.12), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.12), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+    .topbar{
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,23,34,.9), rgba(15,18,23,.9));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:sticky;
+      top:16px;
+      backdrop-filter: blur(10px);
+      z-index:10;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      letter-spacing:.2px;
+    }
+    .brand .name{
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 22px;
+      line-height:1.1;
+    }
+    .brand .tag{
+      color:var(--muted);
+      font-size: 12px;
+    }
+    .nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      color:var(--muted);
+      font-size: 13px;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color: var(--line); color: var(--ink); background: rgba(255,255,255,.03);}
+
+    .mast{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px dashed rgba(139,183,255,.35);
+      background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+    .mast .kicker{
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom:8px;
+    }
+    .mast h1{
+      margin:0 0 8px 0;
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1.12;
+    }
+    .mast .dek{
+      margin:0;
+      color: var(--muted);
+      max-width: 70ch;
+      font-size: 15px;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.65fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .article{
+      padding: 18px 18px 10px 18px;
+    }
+    .meta{
+      display:flex; flex-wrap:wrap; gap:10px 14px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .meta .pill{
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .meta .byline strong{color: var(--ink); font-weight: 650;}
+    .hero{
+      margin: 6px 0 14px 0;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.25);
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .caption{
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top:1px solid rgba(255,255,255,.07);
+      background: rgba(0,0,0,.18);
+    }
+    .content p{margin: 0 0 14px 0;}
+    .content p strong{color: var(--ink);}
+    .content blockquote{
+      margin: 16px 0;
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent);
+      background: rgba(139,183,255,.06);
+      color: var(--ink);
+      border-radius: 12px;
+    }
+    .content blockquote p{margin:0}
+    .content ul{
+      margin: 0 0 16px 18px;
+      color: var(--muted);
+    }
+
+    .footerline{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: 14px 18px;
+      color: var(--soft);
+      font-size: 12px;
+    }
+    .footerline a{
+      text-decoration:none;
+      border-bottom:1px dotted rgba(139,183,255,.5);
+    }
+
+    /* Sidebar */
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .side .panel{
+      padding:16px;
+    }
+    .panel h3{
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .panel .small{
+      color: var(--muted);
+      font-size: 13px;
+      margin:0;
+    }
+
+    .ad{
+      background:
+        radial-gradient(600px 220px at 10% 20%, rgba(125,255,207,.16), transparent 60%),
+        radial-gradient(600px 240px at 100% 0%, rgba(139,183,255,.18), transparent 60%),
+        rgba(18,23,34,.72);
+      border: 1px solid rgba(125,255,207,.35);
+      position:relative;
+    }
+    .ad .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      margin-bottom:10px;
+    }
+    .ad h2{
+      margin:0 0 8px 0;
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height:1.15;
+    }
+    .ad p{margin:0 0 12px 0; color: var(--muted); font-size: 13px;}
+    .ad .adimg{
+      margin-top:12px;
+      border-radius: 14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.2);
+    }
+    .ad .adimg img{width:100%; height:auto; display:block;}
+    .ad .cta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      text-decoration:none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .btn:hover{background: rgba(255,255,255,.07);}
+    .btn.primary{
+      border-color: rgba(125,255,207,.45);
+      background: rgba(125,255,207,.10);
+    }
+    .btn.primary:hover{background: rgba(125,255,207,.14);}
+
+    .bullet{
+      margin-top:12px;
+      padding:12px 12px 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .bullet ul{margin:0 0 0 16px; padding:0; color: var(--muted); font-size: 13px;}
+    .bullet li{margin: 6px 0;}
+    .note{
+      margin-top:10px;
+      font-size: 11px;
+      color: var(--soft);
+    }
+
+    .divider{
+      height:1px; background: rgba(255,255,255,.08);
+      margin: 12px 0;
+    }
+
+    /* Print-friendly */
+    @media print{
+      body{background:#fff; color:#111}
+      .topbar, .mast{position:static; box-shadow:none; background:#fff}
+      .card{box-shadow:none; background:#fff}
+      .nav{display:none}
+      .wrap{max-width: 100%; padding:0}
+      .grid{grid-template-columns:1fr}
+      .ad{display:none}
+      .meta .pill{border-color:#ccc}
+      .caption, .footerline, .meta{color:#444}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="topbar" role="banner" aria-label="Courier Weekly header">
+      <div class="brand">
+        <div class="name">Courier Weekly</div>
+        <div class="tag">Local deliveries. Local drama. Verified where possible.</div>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/local">Local</a>
+        <a href="/business">Business</a>
+        <a href="/investigations">Investigations</a>
+        <a href="/notices">Notices</a>
+      </nav>
+    </header>
+
+    <section class="mast" aria-label="Article masthead">
+      <div class="kicker">Business • Workplace • Community</div>
+      <h1>“High-Vis, Higher Stakes”: Courier Depot Tightens Safety Rules After Near-Miss</h1>
+      <p class="dek">
+        A routine morning shift reportedly turned tense when a reversing van and an unsecured pallet “almost met in the middle.”
+        Staff say new briefings are rolling out immediately — and one familiar face is suddenly everywhere.
+      </p>
+    </section>
+
+    <main class="grid" role="main">
+      <!-- ARTICLE -->
+      <article class="card" aria-label="Courier Weekly article">
+        <div class="article">
+          <div class="meta">
+            <span class="pill">Updated: <time datetime="2025-12-19">Dec 19, 2025</time></span>
+            <span class="pill">Reading time: ~3 min</span>
+            <span class="byline">By <strong>R. Halstead</strong> • Courier Weekly Staff</span>
+          </div>
+
+          <!-- HERO IMAGE
+               Replace the src below with wherever you host the photoreal Pedro image.
+               Example:
+                 src="/assets/img/pedro-real.png"
+                 src="https://cdn.yoursite.com/images/pedro-real.png"
+          -->
+          <figure class="hero">
+            <img
+              src="/assets/img/pedro-photoreal.png"
+              alt="Depot employee Pedro J. pictured in high-visibility outerwear."
+              loading="lazy"
+            />
+            <figcaption class="caption">
+              Depot staffer Pedro J. pictured during a routine morning check-in. Management says new “near-miss” reporting guidance
+              will be posted across the facility this week.
+            </figcaption>
+          </figure>
+
+          <div class="content">
+            <p>
+              A local courier depot has introduced stricter floor-walking procedures following what staff described as a
+              “near-miss” incident during early operations on Tuesday.
+              According to multiple employees, a reversing van was directed into a bay as a pallet was being repositioned nearby,
+              prompting supervisors to pause loading “until the area was confirmed clear.”
+            </p>
+
+            <p>
+              While no injuries were reported, the incident has triggered a familiar cascade of workplace changes:
+              refreshed signage, tighter high-visibility compliance, and a renewed emphasis on reporting hazards — even “small ones.”
+              One staffer, who asked not to be named, said the vibe was “tense for about five minutes, then everybody went straight into
+              <strong>training mode</strong>.”
+            </p>
+
+            <blockquote>
+              <p>
+                “They’re not trying to blame anyone. It’s more like: ‘If it can happen once, it can happen twice.’
+                And now there’s posters everywhere. Like, everywhere.”
+              </p>
+            </blockquote>
+
+            <p>
+              Staff also noted that <strong>Pedro J.</strong>, a long-time depot employee known for keeping things calm during the morning rush,
+              has become the unofficial face of the new safety push — appearing in freshly printed reminders near the loading bays and
+              staff entrance. Several employees joked that the posters look like a professional campaign, not an internal notice.
+            </p>
+
+            <p>
+              Management did not provide detailed comment on the incident when contacted, but confirmed that an updated “safe reversing”
+              briefing is being rolled out to shift leads. Workers say the practical changes are simple:
+            </p>
+
+            <ul>
+              <li>Clearer bay marshaling (one signaler, one driver, one plan)</li>
+              <li>Mandatory high-vis checks before stepping onto the active floor</li>
+              <li>Stricter rules on unsecured pallets and temporary “staging” areas</li>
+              <li>A reminder that reporting near-misses is “non-punitive”</li>
+            </ul>
+
+            <p>
+              For some, the shift is welcome. “Nobody wants an accident,” one employee said. “If we’ve got to spend an extra minute
+              doing it right, fine. Just… maybe not with my face on a poster.”
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+              <strong>Editor’s note:</strong> Courier Weekly will update this story if official incident details are released.
+              Workers with information can contact the newsroom through the usual channels.
+            </p>
+          </div>
+        </div>
+
+        <div class="footerline" aria-label="Article footer">
+          <div>Filed under: Workplace Safety • Local Business • Logistics</div>
+          <div>
+            <a href="/notices">View public notices</a> •
+            <a href="/investigations">Investigations</a> •
+            <a href="/contact">Contact the newsroom</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="side" aria-label="Sidebar content">
+        <!-- HEALTH & SAFETY AD PAGE (as a sidebar module) -->
+        <section class="card panel ad" aria-label="Health and Safety advert">
+          <span class="badge">Sponsored Notice</span>
+          <h2>Health &amp; Safety: “One Minute Saves Hours”</h2>
+          <p>
+            A friendly reminder from your depot’s safety team: visibility, spacing, and clear signals prevent avoidable incidents.
+            Keep it simple. Keep it safe. Keep moving.
+          </p>
+
+          <div class="bullet" aria-label="Safety bullet points">
+            <ul>
+              <li>Wear high-vis on the floor — no exceptions.</li>
+              <li>Never step behind a reversing vehicle.</li>
+              <li>Report near-misses early (no blame, just fixes).</li>
+              <li>Secure pallets before staging or moving.</li>
+            </ul>
+            <div class="note">Not legal advice. Follow site policy and local regulations.</div>
+          </div>
+
+          <!-- Use the same Pedro image here if you like, or a cropped “poster” version -->
+          <div class="adimg" aria-label="Advert image">
+            <img
+              src="/assets/img/pedro-photoreal.png"
+              alt="Poster image featuring Pedro J. in high-visibility workwear."
+              loading="lazy"
+            />
+          </div>
+
+          <div class="cta">
+            <a class="btn primary" href="/notices/safety">Read the full notice</a>
+            <a class="btn" href="/contact">Request a correction</a>
+          </div>
+        </section>
+
+        <!-- QUICK LINKS / “REAL NEWSPAPER” FLAVOUR -->
+        <section class="card panel" aria-label="More from Courier Weekly">
+          <h3>More from Courier Weekly</h3>
+          <p class="small">
+            <a href="/local">Local</a> • <a href="/business">Business</a> • <a href="/notices">Notices</a> • <a href="/investigations">Investigations</a>
+          </p>
+          <div class="divider"></div>
+          <p class="small">
+            <strong>Tip line:</strong> Got a lead? Email the newsroom with “CW TIP” in the subject line.
+            (We verify before we publish.)
+          </p>
+        </section>
+
+        <!-- OPTIONAL: A TINY “CLASSIFIED” STYLE BOX -->
+        <section class="card panel" aria-label="Classified style box">
+          <h3>Community Board</h3>
+          <p class="small">
+            <strong>LOST:</strong> One handheld scanner (blue case), last seen near Bay 3.<br/>
+            <strong>FOUND:</strong> A lunchbox labeled “DO NOT TOUCH.” (We did not touch.)
+          </p>
+        </section>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
