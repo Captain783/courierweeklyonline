@@ -167,7 +167,10 @@
 <body>
 
     <!-- MAIN CONTENT -->
-    <div class="page">
+<div class="page">
+    <div class="layout">
+
+        <!-- MAIN COLUMN (your existing content) -->
         <div class="container">
 
             <!-- Masthead -->
@@ -198,7 +201,26 @@
             </p>
 
         </div>
+
+        <!-- RIGHT SIDE PANEL -->
+        <aside class="sidepanel">
+            <h3>Notices</h3>
+
+            <!-- If healthnsafety.html is in the ROOT (same folder as index.html): -->
+            <a href="healthnsafety.html">Safety Bulletin: Loading Bay Near-Miss Reporting</a>
+
+            <!-- If it’s actually inside /healthnsafety/ folder, use this instead:
+            <a href="healthnsafety/healthnsafety.html">Safety Bulletin: Loading Bay Near-Miss Reporting</a>
+            -->
+
+            <div class="meta">
+                Public notices and verified updates.<br>
+                Reference codes included for corrections.
+            </div>
+        </aside>
+
     </div>
+</div>
 
     <!-- STICKY BOTTOM FOOTER -->
     <footer>
