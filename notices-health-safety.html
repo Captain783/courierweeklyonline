@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Weekly — Public Notice: Workplace Safety Bulletin</title>
+  <meta name="description" content="Courier Weekly public notice: workplace safety bulletin and depot guidance." />
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --paper:#0f1217;
+      --card:#121722;
+      --ink:#e9eef6;
+      --muted:#b4c0d6;
+      --soft:#7f8aa3;
+      --line:#22304a;
+      --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
+      --radius:18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --max: 1100px;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.20), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.12), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.12), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+    .topbar{
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,23,34,.9), rgba(15,18,23,.9));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:sticky;
+      top:16px;
+      backdrop-filter: blur(10px);
+      z-index:10;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      letter-spacing:.2px;
+    }
+    .brand .name{
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 22px;
+      line-height:1.1;
+    }
+    .brand .tag{
+      color:var(--muted);
+      font-size: 12px;
+    }
+    .nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      color:var(--muted);
+      font-size: 13px;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color: var(--line); color: var(--ink); background: rgba(255,255,255,.03);}
+
+    .mast{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px solid rgba(125,255,207,.35);
+      background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+    .mast .kicker{
+      color: var(--accent2);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom:8px;
+    }
+    .mast h1{
+      margin:0 0 8px 0;
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1.12;
+    }
+    .mast .dek{
+      margin:0;
+      color: var(--muted);
+      max-width: 75ch;
+      font-size: 15px;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.55fr .95fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel{padding:18px;}
+    .noticehead{
+      display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center; justify-content:space-between;
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+    }
+    .noticehead .left{
+      display:flex; flex-direction:column; gap:3px;
+    }
+    .noticehead .label{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .noticehead .label .dot{
+      width:8px; height:8px; border-radius:999px; background: rgba(125,255,207,.85);
+      box-shadow: 0 0 0 4px rgba(125,255,207,.12);
+    }
+    .noticehead .ref{
+      color: var(--soft);
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    }
+    .noticehead .meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12px;
+      align-items:center;
+    }
+    .pill{
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .noticebody{
+      padding:18px;
+    }
+    .noticebody h2{
+      margin: 0 0 10px 0;
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height:1.18;
+    }
+    .noticebody p{margin: 0 0 14px 0; color: var(--ink);}
+    .noticebody .muted{color: var(--muted);}
+    .callout{
+      margin: 16px 0;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(125,255,207,.35);
+      background: rgba(125,255,207,.08);
+    }
+    .callout strong{color: var(--ink);}
+    .rules{
+      margin: 14px 0 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .rule{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+    }
+    .rule .t{
+      display:flex; gap:10px; align-items:flex-start;
+      font-weight: 700;
+    }
+    .icon{
+      width:26px; height:26px;
+      border-radius: 10px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      flex: 0 0 auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      color: rgba(255,255,255,.9);
+    }
+    .rule p{
+      margin: 6px 0 0 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sig{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .btnrow{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      text-decoration:none;
+      font-size: 13px;
+      font-weight: 650;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(255,255,255,.07);}
+    .btn.primary{
+      border-color: rgba(125,255,207,.45);
+      background: rgba(125,255,207,.10);
+    }
+    .btn.primary:hover{background: rgba(125,255,207,.14);}
+    .btn.warn{
+      border-color: rgba(255,125,125,.35);
+      background: rgba(255,125,125,.08);
+    }
+    .btn.warn:hover{background: rgba(255,125,125,.12);}
+
+    /* Sidebar blocks */
+    .side{
+      display:flex; flex-direction:column;
+      gap:18px;
+    }
+    .side h3{
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .small{margin:0; color: var(--muted); font-size: 13px;}
+    .divider{height:1px; background: rgba(255,255,255,.08); margin: 12px 0;}
+
+    .poster{
+      border: 1px solid rgba(139,183,255,.35);
+      background:
+        radial-gradient(600px 220px at 10% 20%, rgba(139,183,255,.16), transparent 60%),
+        radial-gradient(600px 240px at 100% 0%, rgba(125,255,207,.12), transparent 60%),
+        rgba(18,23,34,.72);
+    }
+    .poster .img{
+      border-radius: 14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.2);
+    }
+    .poster .img img{width:100%; height:auto; display:block;}
+    .poster .headline{
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height:1.15;
+      margin: 12px 0 6px 0;
+    }
+    .poster .sub{margin:0; color: var(--muted); font-size: 13px;}
+    .poster .tagline{
+      margin-top: 10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .fineprint{
+      margin-top: 12px;
+      color: var(--soft);
+      font-size: 11px;
+      line-height:1.45;
+    }
+
+    /* Print */
+    @media print{
+      body{background:#fff; color:#111}
+      .topbar, .mast{position:static; box-shadow:none; background:#fff}
+      .card{box-shadow:none; background:#fff}
+      .nav{display:none}
+      .wrap{max-width: 100%; padding:0}
+      .grid{grid-template-columns:1fr}
+      .pill, .btn{border-color:#ccc; background:#fff}
+      .poster{border-color:#ccc}
+      .fineprint, .small, .noticehead .meta{color:#444}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="topbar" role="banner" aria-label="Courier Weekly header">
+      <div class="brand">
+        <div class="name">Courier Weekly</div>
+        <div class="tag">Public notices and verified updates.</div>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/local">Local</a>
+        <a href="/business">Business</a>
+        <a href="/investigations">Investigations</a>
+        <a href="/notices">Notices</a>
+      </nav>
+    </header>
+
+    <section class="mast" aria-label="Notice masthead">
+      <div class="kicker">Public Notice • Workplace Safety</div>
+      <h1>Safety Bulletin: Loading Bay Near-Miss Reporting &amp; Floor Rules</h1>
+      <p class="dek">
+        This notice summarizes updated guidance for depot staff and contractors after a reported near-miss.
+        It is published for community transparency and operational clarity.
+      </p>
+    </section>
+
+    <main class="grid" role="main">
+      <!-- MAIN NOTICE -->
+      <section class="card" aria-label="Public notice body">
+        <div class="noticehead" aria-label="Notice header">
+          <div class="left">
+            <div class="label"><span class="dot" aria-hidden="true"></span>PUBLIC NOTICE</div>
+            <div class="ref">Reference: CW-NOTICE-2025-12-19-HS01</div>
+          </div>
+          <div class="meta">
+            <span class="pill">Issued: <time datetime="2025-12-19">Dec 19, 2025</time></span>
+            <span class="pill">Applies to: Depots &amp; Bays</span>
+            <span class="pill">Status: Active</span>
+          </div>
+        </div>
+
+        <div class="noticebody">
+          <h2>Summary</h2>
+          <p class="muted">
+            Following a reported near-miss involving a reversing vehicle and a staged pallet,
+            depot management has reiterated floor-walking expectations and introduced a clearer near-miss reporting process.
+            No injuries were reported.
+          </p>
+
+          <div class="callout" role="note" aria-label="Key message">
+            <strong>Key point:</strong> Reporting a near-miss is non-punitive. The purpose is to identify hazards early and prevent injuries.
+          </div>
+
+          <h2>Required Floor Rules (Effective Immediately)</h2>
+          <ul class="rules" aria-label="Required rules list">
+            <li class="rule">
+              <div class="t"><span class="icon">01</span>High-Visibility Compliance</div>
+              <p>High-vis must be worn on active floors and bays. If you forgot it, retrieve it before entering.</p>
+            </li>
+            <li class="rule">
+              <div class="t"><span class="icon">02</span>Safe Reversing Protocol</div>
+              <p>One driver. One signaler. One plan. If you cannot see the signaler, stop immediately.</p>
+            </li>
+            <li class="rule">
+              <div class="t"><span class="icon">03</span>No “Temporary” Pallet Staging</div>
+              <p>Staging areas must remain marked and clear. Unsecured pallets may not be placed in travel paths.</p>
+            </li>
+            <li class="rule">
+              <div class="t"><span class="icon">04</span>Keep Clear Zones Clear</div>
+              <p>Do not step behind vehicles, even “for a second.” Treat reversing alarms as a hard boundary.</p>
+            </li>
+            <li class="rule">
+              <div class="t"><span class="icon">05</span>Near-Miss Reporting</div>
+              <p>Report via shift lead or the depot log before end of shift. Include time, location, and what changed.</p>
+            </li>
+          </ul>
+
+          <h2>How to Report a Near-Miss</h2>
+          <p class="muted">
+            Use the simplest method available at your site. If in doubt: tell a shift lead and ask for it to be logged.
+            Include: <strong>what almost happened</strong>, <strong>where</strong>, and <strong>what prevented it</strong>.
+          </p>
+
+          <div class="divider"></div>
+
+          <div class="sig" aria-label="Signature block">
+            <div>
+              <strong>Issued by:</strong> Depot Operations (Safety) • <strong>Published by:</strong> Courier Weekly Notices Desk
+            </div>
+            <div class="btnrow">
+              <button class="btn primary" onclick="window.print()">Print Notice</button>
+              <a class="btn" href="/notices">Back to Notices</a>
+              <a class="btn warn" href="/contact">Request Correction</a>
+            </div>
+          </div>
+
+          <p class="fineprint">
+            <strong>Disclaimer:</strong> This bulletin is informational and reflects reported or provided guidance at time of publication.
+            It does not replace site-specific training, local laws, or employer policy. If you believe this notice contains an error,
+            contact the Courier Weekly Notices Desk with the reference code above.
+          </p>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="side" aria-label="Sidebar">
+        <!-- “POSTER” MODULE -->
+        <section class="card panel poster" aria-label="Safety poster module">
+          <h3>Depot Poster (Internal Use)</h3>
+
+          <div class="img" aria-label="Poster image">
+            <!-- Replace with your hosted photoreal Pedro image path -->
+            <img
+              src="/assets/img/pedro-photoreal.png"
+              alt="Safety poster image featuring Pedro J. in high-visibility workwear."
+              loading="lazy"
+            />
+          </div>
+
+          <div class="headline">One Minute Saves Hours.</div>
+          <p class="sub">High-vis. Clear signals. No shortcuts in the bays.</p>
+
+          <div class="tagline">
+            <strong>Remember:</strong> If you can’t see the signaler — stop. If you see a hazard — report it.
+          </div>
+
+          <p class="fineprint">
+            Poster concept for in-universe use. For web, the image above can be cropped into a square for staff profiles or notices.
+          </p>
+        </section>
+
+        <!-- QUICK LINKS -->
+        <section class="card panel" aria-label="Notice links">
+          <h3>Related</h3>
+          <p class="small">
+            <a href="/business">Business</a> • <a href="/local">Local</a> • <a href="/investigations">Investigations</a>
+          </p>
+          <div class="divider"></div>
+          <p class="small">
+            <strong>Tip line:</strong> If you witnessed the incident referenced in this notice, contact the newsroom with the reference code.
+          </p>
+        </section>
+
+        <!-- MINI “CORRECTIONS” BOX -->
+        <section class="card panel" aria-label="Corrections box">
+          <h3>Corrections</h3>
+          <p class="small">
+            None at this time. Updates will be appended to this page with timestamps.
+          </p>
+        </section>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
