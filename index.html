@@ -1,234 +1,486 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Courier Weekly Online</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Courier Weekly Online — Independent reporting from the world of logistics, legends, and lost parcels.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Weekly Online</title>
+  <meta name="description" content="Courier Weekly Online — Independent reporting from the world of logistics, legends, and lost parcels.">
 
-    <style>
-        /* Page baseline */
-        html, body {
-            margin: 0;
-            padding: 0;
-            background-color: #0f0f0f;
-            color: #e0e0e0;
-            font-family: Georgia, "Times New Roman", serif;
-            min-height: 100vh;
-        }
-
-        /* Sticky-footer layout */
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Main content wrapper pushes footer down */
-        .page {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #b0b0b0;
-            margin: 10px 0 35px;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.7;
-            margin: 0 0 18px;
-            color: #c8c8c8;
-        }
-
-        .divider {
-            width: 60px;
-            height: 2px;
-            background-color: #666;
-            margin: 28px auto;
-        }
-
-        .footer-note {
-            margin-top: 35px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        a {
-            color: #cfa44a;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Bottom footer (sticky at bottom of screen) */
-        footer {
-            padding: 18px 0 22px;
-            border-top: 1px solid #333;
-            text-align: center;
-        }
-
-        footer img {
-            max-width: 160px;
-            height: auto;
-            opacity: 0.85;
-        }
-
-        footer p {
-            font-size: 0.85em;
-            color: #777;
-            margin: 10px 0 0;
-        }
-
-        /* --- New: 2-column layout with right side panel --- */
-        .layout {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            justify-content: center;
-            width: 100%;
-            max-width: 980px; /* overall width of the centered layout */
-        }
-
-        /* Let your existing .container become the left/main column */
-        .container {
-            flex: 1;
-            max-width: 700px; /* keep your current look */
-        }
-
-        /* Right side panel */
-        .sidepanel {
-            width: 260px;
-            border: 1px solid #333;
-            background: #141414;
-            border-radius: 10px;
-            padding: 16px;
-            text-align: left;
-        }
-
-        /* Panel headings + links */
-        .sidepanel h3 {
-            margin: 0 0 12px;
-            font-size: 0.95rem;
-            font-weight: normal;
-            color: #b0b0b0;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .sidepanel a {
-            display: block;
-            padding: 10px 10px;
-            border-radius: 8px;
-            color: #cfa44a;
-            text-decoration: none;
-        }
-
-        .sidepanel a:hover {
-            background: #1b1b1b;
-            text-decoration: none;
-        }
-
-        .sidepanel .meta {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #888;
-            line-height: 1.5;
-        }
-
-        /* Mobile: stack panel under main content */
-        @media (max-width: 900px) {
-            .layout {
-                flex-direction: column;
-                align-items: center;
-            }
-            .sidepanel {
-                width: 100%;
-                max-width: 700px;
-            }
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --paper:#0f1217;
+      --card:#121722;
+      --ink:#e9eef6;
+      --muted:#b4c0d6;
+      --soft:#7f8aa3;
+      --line:#22304a;
+      --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
+      --gold:#cfa44a;
+      --radius:18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --max: 1160px;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
-    </style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.10), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+
+    /* Top nav — locked style */
+    .topbar{
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,23,34,.9), rgba(15,18,23,.9));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:sticky;
+      top:16px;
+      backdrop-filter: blur(10px);
+      z-index:10;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      letter-spacing:.2px;
+      min-width: 210px;
+    }
+    .brand .name{
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: 22px;
+      line-height:1.1;
+    }
+    .brand .tag{
+      color:var(--muted);
+      font-size: 12px;
+    }
+    .nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      color:var(--muted);
+      font-size: 13px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color: var(--line); color: var(--ink); background: rgba(255,255,255,.03);}
+
+    /* Masthead strip */
+    .mast{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px dashed rgba(139,183,255,.35);
+      background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+
+    /* UK-ish front page vibe: date strip + sections */
+    .strap{
+      display:flex; flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .strap .pill{
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Layout */
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.6fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* Lead story */
+    .lead{
+      padding:18px;
+    }
+    .kicker{
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1,h2,h3{margin:0}
+    .lead h1{
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+    .lead p{
+      margin:0 0 14px 0;
+      color: var(--muted);
+      max-width: 75ch;
+      font-size: 15px;
+    }
+
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      text-decoration:none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .btn:hover{background: rgba(255,255,255,.07);}
+    .btn.primary{
+      border-color: rgba(139,183,255,.45);
+      background: rgba(139,183,255,.10);
+    }
+    .btn.primary:hover{background: rgba(139,183,255,.14);}
+
+    /* Story list */
+    .list{padding:16px 18px;}
+    .sectionhead{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.10);
+    }
+    .sectionhead h2{
+      font-size: 14px;
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sectionhead a{
+      color: var(--muted);
+      text-decoration:none;
+      border-bottom:1px dotted rgba(139,183,255,.5);
+      font-size: 12px;
+    }
+    .story{
+      padding:14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .story:last-child{border-bottom:none}
+    .story .t{
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height:1.18;
+      margin-bottom:6px;
+    }
+    .story .t a{text-decoration:none}
+    .story .t a:hover{color: var(--accent)}
+    .story .meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing:.08em;
+    }
+    .story .d{
+      margin:8px 0 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Right column */
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .panel{padding:16px 16px 14px 16px;}
+    .panel h3{
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Notices module */
+    .notices a{
+      display:block;
+      text-decoration:none;
+      padding:10px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      margin-bottom:10px;
+    }
+    .notices a:hover{background: rgba(255,255,255,.05); border-color: rgba(139,183,255,.25);}
+    .notices .n-title{
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height:1.18;
+      margin-bottom:6px;
+      color: var(--ink);
+    }
+    .notices .n-meta{
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+
+    /* Community board — HARD CANON humour zone */
+    .board .item{
+      padding:10px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      margin-bottom:10px;
+    }
+    .board .item:last-child{margin-bottom:0}
+    .board .label{
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      margin-bottom:6px;
+    }
+    .board .text{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.45;
+      margin:0;
+    }
+
+    /* Tiny “ticker” UK tabloid flavour (subtle) */
+    .ticker{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+    .ticker .flag{
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+    }
+    .ticker strong{color: var(--ink);}
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      padding: 18px 0 22px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      text-align: center;
+      color: var(--soft);
+    }
+    footer img{
+      max-width: 160px;
+      height: auto;
+      opacity: 0.85;
+    }
+    footer p{
+      font-size: 0.85em;
+      color: #777;
+      margin: 10px 0 0;
+    }
+
+    /* Print friendly */
+    @media print{
+      body{background:#fff; color:#111}
+      .topbar, .mast{position:static; box-shadow:none; background:#fff}
+      .card{box-shadow:none; background:#fff}
+      .nav{display:none}
+      .wrap{max-width: 100%; padding:0}
+      .grid{grid-template-columns:1fr}
+      .sectionhead a{display:none}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-    <!-- MAIN CONTENT -->
-<div class="page">
-    <div class="layout">
+    <!-- Locked nav style (matches article pages) -->
+    <header class="topbar" role="banner" aria-label="Courier Weekly header">
+      <div class="brand">
+        <div class="name">Courier Weekly</div>
+        <div class="tag">Local deliveries. Local drama. Verified where possible.</div>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="local.html">Local</a>
+        <a href="business.html">Business</a>
+        <a href="investigations.html">Investigations</a>
+        <a href="notices.html">Notices</a>
+      </nav>
+    </header>
 
-        <!-- MAIN COLUMN (your existing content) -->
-        <div class="container">
+    <!-- Masthead / Logo must stay (PB1) -->
+    <section class="mast" aria-label="Site masthead">
+      <!-- Masthead -->
+      <img src="assets/courier_weekly_logo.png"
+           alt="The Courier Weekly"
+           style="max-width:100%; height:auto; margin-bottom:14px;">
 
-            <!-- Masthead -->
-            <img src="assets/courier_weekly_logo.png"
-                 alt="The Courier Weekly"
-                 style="max-width:100%; height:auto; margin-bottom:18px;">
+      <div class="ticker" aria-label="Front page ticker">
+        <span class="flag">Edition: <strong>Online</strong></span>
+        <span class="flag">Weather: <strong>Grey, again</strong></span>
+        <span class="flag">Today’s mood: <strong>“Where’s that scanner?”</strong></span>
+      </div>
 
-            <h2>Independent reporting from the world of logistics</h2>
+      <div class="strap" aria-label="Front page strapline">
+        <span class="pill">Independent reporting</span>
+        <span class="pill">Depots • Drivers • Drama</span>
+        <span class="pill">Archive: Limited (for now)</span>
+      </div>
+    </section>
 
-            <div class="divider"></div>
+    <main class="grid" role="main">
+      <!-- LEFT / MAIN COLUMN -->
+      <section class="card" aria-label="Lead story">
+        <div class="lead">
+          <div class="kicker">Top Story • Workplace • Business</div>
+          <h1>“High-Vis, Higher Stakes”: Depot Tightens Floor Rules After Near-Miss</h1>
+          <p>
+            Courier Weekly understands no injuries were reported, but staff described a “pause everything” moment
+            when a reversing van and an unsecured pallet almost shared the same bit of air. New briefings are rolling out —
+            and one familiar face is suddenly everywhere.
+          </p>
 
-            <p>
-                From legendary couriers and lost parcels to corporate rivalries and
-                whispered stories from the depots — <em>Courier Weekly Online</em> documents
-                the moments that shaped the delivery world.
-            </p>
-
-            <p>
-                Archives are currently under review.
-                Selected reports will be published soon.
-            </p>
-
-            <div class="divider"></div>
-
-            <p class="footer-note">
-                An in-universe publication from<br>
-                <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">Lucky 7 Game Studio</a>
-            </p>
-
+          <div class="btnrow">
+            <a class="btn primary" href="healthnsafety.html">Read the report</a>
+            <a class="btn" href="notices-health-safety.html">Read the public notice</a>
+          </div>
         </div>
 
-        <!-- RIGHT SIDE PANEL -->
-        <aside class="sidepanel">
-            <h3>Notices</h3>
+        <div class="sectionhead" aria-label="Latest section header">
+          <h2>Latest</h2>
+          <a href="local.html" title="More stories (coming soon)">More →</a>
+        </div>
 
-            <!-- If healthnsafety.html is in the ROOT (same folder as index.html): -->
-            <a href="healthnsafety.html">Safety Bulletin: Loading Bay Near-Miss Reporting</a>
-
-            <!-- If it’s actually inside /healthnsafety/ folder, use this instead:
-            <a href="healthnsafety/healthnsafety.html">Safety Bulletin: Loading Bay Near-Miss Reporting</a>
-            -->
-
+        <div class="list" aria-label="Latest stories list">
+          <!-- These can be swapped for real articles as you add them -->
+          <div class="story">
+            <div class="t"><a href="healthnsafety.html">Posters Appear Overnight: “One Minute Saves Hours” Campaign Spreads Across Bays</a></div>
             <div class="meta">
-                Public notices and verified updates.<br>
-                Reference codes included for corrections.
+              <span>Workplace</span><span>•</span><span>Updated today</span>
             </div>
-        </aside>
+            <p class="d">Staff report a sudden increase in laminated reminders, including one placed “at eye level on the kettle.”</p>
+          </div>
 
-    </div>
-</div>
+          <div class="story">
+            <div class="t"><a href="investigations.html">Investigations Desk: The Case of the Missing Handheld Scanners (Part 1)</a></div>
+            <div class="meta">
+              <span>Investigations</span><span>•</span><span>Archive</span>
+            </div>
+            <p class="d">A timeline of disappearances, suspicious pockets, and one manager’s clipboard that “knows too much.”</p>
+          </div>
 
-    <!-- STICKY BOTTOM FOOTER -->
+          <div class="story">
+            <div class="t"><a href="business.html">Business Briefing: Rival Courier Brands Quietly Poach Drivers Ahead of Peak Season</a></div>
+            <div class="meta">
+              <span>Business</span><span>•</span><span>Coming soon</span>
+            </div>
+            <p class="d">Insiders describe a “polite but brutal” talent grab. Offers include better routes, better kit, and “less drama.”</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT / SIDEBAR -->
+      <aside class="side" aria-label="Sidebar">
+        <section class="card panel notices" aria-label="Notices panel">
+          <h3>Public Notices</h3>
+
+          <a href="notices-health-safety.html">
+            <div class="n-title">Safety Bulletin: Near-Miss Reporting &amp; Bay Rules</div>
+            <div class="n-meta">Ref: CW-NOTICE-2025-12-19-HS01 • Active</div>
+          </a>
+
+          <a href="notices.html">
+            <div class="n-title">Notices Index (Coming Soon)</div>
+            <div class="n-meta">Updates, corrections, and bulletins</div>
+          </a>
+        </section>
+
+        <section class="card panel board" aria-label="Community board">
+          <h3>Community Board</h3>
+
+          <div class="item">
+            <div class="label">LOST</div>
+            <p class="text">One handheld scanner (blue case), last seen near Bay 3. If found, please return it before it gets “reassigned.”</p>
+          </div>
+
+          <div class="item">
+            <div class="label">FOUND</div>
+            <p class="text">A lunchbox labelled “DO NOT TOUCH.” (We did not touch.)</p>
+          </div>
+
+          <div class="item">
+            <div class="label">NOTICE</div>
+            <p class="text">If you borrowed the “temporary” trolley, it is no longer temporary. Please bring it back. Cheers.</p>
+          </div>
+        </section>
+
+        <section class="card panel" aria-label="From the desk">
+          <h3>From the Desk</h3>
+          <p style="margin:0; color: var(--muted); font-size: 13px; line-height:1.55;">
+            Courier Weekly verifies where possible. If you have documents, photos, or the mysterious ability to make a depot printer behave,
+            contact the newsroom. Anonymous tips accepted. Poor handwriting tolerated.
+          </p>
+        </section>
+      </aside>
+    </main>
+
     <footer>
-        <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
+      <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
         <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
-        </a>
-        <p>Published by Lucky 7 Game Studio</p>
+      </a>
+      <p>Published by Lucky 7 Game Studio</p>
     </footer>
 
+  </div>
 </body>
 </html>
