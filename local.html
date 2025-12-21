@@ -8,18 +8,21 @@
   <style>
     :root{
       --bg:#0b0d10;
+      --paper:#0f1217;
       --card:#121722;
       --ink:#e9eef6;
       --muted:#b4c0d6;
       --soft:#7f8aa3;
       --line:#22304a;
       --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
       --gold:#cfa44a;
       --radius:18px;
       --shadow: 0 12px 40px rgba(0,0,0,.35);
       --max: 1160px;
       --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
     *{box-sizing:border-box}
@@ -27,16 +30,22 @@
       margin:0;
       font-family: var(--sans);
       color:var(--ink);
-      background: var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.10), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.10), transparent 55%),
+        var(--bg);
       line-height:1.55;
     }
 
-    a{color:inherit; text-decoration:none}
+    a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
 
-    /* Topbar (LOCKED) */
+   /* Topbar (LOCKED) */
     .topbar{
-      display:flex; justify-content:space-between; align-items:center;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       padding:18px 20px;
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -49,23 +58,49 @@
       font-weight:800;
     }
     .brand .tag{
-      font-size:12px;
+  font-size:12px;
       color:var(--muted);
-    }
+}
     .nav{
-      display:flex; gap:14px;
+      display:flex;
+      gap:14px;
       font-size:13px;
       color:var(--muted);
     }
     .nav a:hover{color:var(--ink)}
 
-    /* Masthead */
+    /* Masthead strip */
     .mast{
       margin-top:18px;
       padding:18px 20px;
       border:1px dashed rgba(139,183,255,.35);
-      border-radius: var(--radius);
       background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+
+    /* UK-ish front page vibe: date strip + sections */
+    .strap{
+      display:flex; flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .strap .pill{
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
     }
 
     /* Layout */
@@ -74,17 +109,29 @@
       display:grid;
       grid-template-columns: 1.6fr .9fr;
       gap:18px;
+      align-items:start;
     }
-    @media(max-width:900px){
+    @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+    @media (max-width: 700px){
+      .topbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav{
+        flex-wrap: wrap;
+      }
     }
 
     .card{
       border:1px solid var(--line);
-      border-radius: var(--radius);
       background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding:18px;
+      overflow:hidden;
     }
 
     h1{
