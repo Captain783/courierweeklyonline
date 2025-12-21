@@ -1,1 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Weekly — Missing Handheld Scanners (Part 1)</title>
+  <meta name="description" content="Investigations Desk: The Case of the Missing Handheld Scanners (Part 1) — Courier Weekly Online.">
 
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --paper:#0f1217;
+      --card:#121722;
+      --ink:#e9eef6;
+      --muted:#b4c0d6;
+      --soft:#7f8aa3;
+      --line:#22304a;
+      --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
+      --gold:#cfa44a;
+      --radius:18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --max: 1160px;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.10), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+
+    /* Topbar (LOCKED) */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(18,23,34,.9);
+      box-shadow: var(--shadow);
+    }
+    .brand .name{
+      font-family: var(--serif);
+      font-size:22px;
+      font-weight:800;
+    }
+    .brand .tag{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .nav{
+      display:flex;
+      gap:14px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{ text-decoration:none; }
+    .nav a:hover{color:var(--ink)}
+
+    /* Masthead strip */
+    .mast{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px dashed rgba(139,183,255,.35);
+      background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+
+    /* Layout */
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.6fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+    @media (max-width: 700px){
+      .topbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav{
+        flex-wrap: wrap;
+      }
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.padded{ padding:18px; }
+
+    /* Sidebar */
+    .side{display:flex; flex-direction:column; gap:18px}
+    .panel{ padding:16px 16px 14px 16px; }
+    .panel h3{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .board .item{
+      padding:10px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      background: rgba(0,0,0,.15);
+      margin-bottom:10px;
+    }
+    .board .item:last-child{margin-bottom:0}
+    .board .label{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--soft);
+      margin-bottom:6px;
+    }
+    .board p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    /* Article styling */
+    .kicker{
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1{ font-family: var(--serif); font-size:34px; line-height:1.12; margin:0 0 10px 0; }
+    .meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing:.08em;
+      margin-bottom: 14px;
+    }
+    .rule{
+      margin: 14px 0;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .article p{
+      margin:0 0 14px 0;
+      color: var(--muted);
+      max-width: 78ch;
+      font-size: 15px;
+    }
+    .quote{
+      margin:16px 0;
+      padding:12px 14px;
+      border-left:3px solid rgba(139,183,255,.55);
+      background: rgba(0,0,0,.14);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .quote strong{ color: var(--ink); }
+
+    .nextbox{
+      margin-top: 16px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+    }
+    .nextbox .t{
+      font-family: var(--serif);
+      font-size: 16px;
+      margin:0 0 6px 0;
+      color: var(--ink);
+    }
+    .nextbox .s{
+      margin:0;
+      font-size: 13px;
+      color: var(--soft);
+      letter-spacing:.06em;
+      text-transform: uppercase;
+    }
+
+    footer{
+      margin-top:18px;
+      padding:18px 0;
+      border-top:1px solid rgba(255,255,255,.1);
+      text-align:center;
+      color:#777;
+    }
+    footer img{
+      max-width:160px;
+      opacity:.85;
+    }
+    footer p{
+      margin: 10px 0 0;
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="topbar" aria-label="Courier Weekly header">
+    <div class="brand">
+      <div class="name">Courier Weekly</div>
+      <div class="tag">Local deliveries. Local drama. Verified where possible.</div>
+    </div>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="local.html">Local</a>
+      <a href="business.html">Business</a>
+      <a href="investigations.html">Investigations</a>
+      <a href="archives.html">Archives</a>
+      <a href="notices.html">Notices</a>
+    </nav>
+  </header>
+
+  <section class="mast" aria-label="Site masthead">
+    <img src="assets/courier_weekly_logo.png" alt="The Courier Weekly" style="max-width:100%; height:auto;">
+  </section>
+
+  <main class="grid" role="main">
+    <!-- MAIN -->
+    <section class="card padded article" aria-label="Investigations article">
+      <div class="kicker">Investigations Desk • Workplace • Archive</div>
+
+      <h1>The Case of the Missing Handheld Scanners (Part 1)</h1>
+
+      <div class="meta">
+        <span>Filed: Investigations</span><span>•</span>
+        <span>Status: Open</span><span>•</span>
+        <span>Ref: CW-INV-SCNR-001</span>
+      </div>
+
+      <div class="rule"></div>
+
+      <p>
+        It started, as these things often do, with a shrug.
+      </p>
+
+      <p>
+        A driver finishing a late shift realised their handheld scanner wasn’t where they’d left it.
+        The device had been signed out correctly, used throughout the day, and logged once at the end of a route —
+        then it was gone.
+      </p>
+
+      <p>
+        No alarms sounded. No error messages appeared. No one noticed anything unusual.
+      </p>
+
+      <p>
+        At first, the incident was treated as a simple misplacement. A trolley checked. A van searched.
+        A locker opened and closed twice “just to be sure.”
+      </p>
+
+      <p>
+        The scanner did not turn up.
+      </p>
+
+      <p>
+        Within days, similar reports began filtering in from other bays. Different shifts. Different drivers. Same outcome.
+      </p>
+
+      <div class="quote">
+        <strong>Staff member:</strong> “It’s not like someone grabbed it. You’d remember that.”
+      </div>
+
+      <p>
+        Internal logs reviewed by <em>Courier Weekly</em> show no forced sign-outs, no duplicate IDs,
+        and no unexplained access attempts. In every case, the scanner simply stops appearing where it should.
+      </p>
+
+      <p>
+        Management sources described the situation as “annoying, but not urgent.” Drivers disagreed.
+      </p>
+
+      <div class="quote">
+        <strong>Driver:</strong> “You don’t lose a scanner by accident. You forget a pen. You forget your lunch. Not that.”
+      </div>
+
+      <p>
+        No formal investigation has been announced. No notice has been posted.
+      </p>
+
+      <p>
+        For now, staff have been advised to “double-check equipment returns” and “keep devices secured when not in use.”
+      </p>
+
+      <p>
+        The scanners remain unaccounted for.
+      </p>
+
+      <p>
+        <em>Courier Weekly</em> will continue to monitor the situation.
+      </p>
+
+      <div class="nextbox" aria-label="Next parts teaser">
+        <p class="t">Next in this series</p>
+        <p class="s">Part 2: Patterns Emerge — coming soon</p>
+        <p class="s">Part 3: The Vanishing Point — coming soon</p>
+      </div>
+
+      <div style="margin-top:18px;">
+        <a href="index.html" style="color:var(--gold); text-decoration:none;">← Return to front page</a>
+      </div>
+    </section>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Sidebar">
+      <section class="card panel board" aria-label="Community board">
+        <h3>Community Board</h3>
+
+        <div class="item">
+          <div class="label">REMINDER</div>
+          <p>Sign it out. Bring it back. If you “left it on charge,” say where.</p>
+        </div>
+
+        <div class="item">
+          <div class="label">LOST</div>
+          <p>One handheld scanner (blue case). If found, do not “reassign” it. Just return it. Cheers.</p>
+        </div>
+
+        <div class="item">
+          <div class="label">NOTICE</div>
+          <p>If the scanner “walked off,” please inform management. We’d like to track its route.</p>
+        </div>
+      </section>
+
+      <section class="card panel" aria-label="Investigations index">
+        <h3>Investigations</h3>
+        <p style="margin:0; color: var(--muted); font-size: 13px; line-height:1.55;">
+          More reports will be published as they are verified. Some files remain open longer than anyone would like.
+        </p>
+        <p style="margin:12px 0 0; font-size:13px;">
+          <a href="investigations.html" style="color:var(--gold); text-decoration:none;">← Back to Investigations</a>
+        </p>
+      </section>
+
+      <section class="card panel" aria-label="Public notices">
+        <h3>Public Notices</h3>
+        <p style="margin:0; font-size:13px;">
+          <a href="notices-health-safety.html" style="color:var(--gold); text-decoration:none;">
+            Safety Bulletin: Near-Miss Reporting
+          </a>
+        </p>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
+      <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
+    </a>
+    <p>Published by Lucky 7 Game Studio</p>
+  </footer>
+
+</div>
+</body>
+</html>
