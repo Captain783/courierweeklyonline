@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Courier Weekly — Local</title>
+  <title>Courier Weekly — Archives</title>
 
   <style>
     :root{
@@ -134,6 +134,8 @@
       overflow:hidden;
     }
 
+    .card.padded{ padding:18px; }
+
     h1{
       font-family: var(--serif);
       font-size:32px;
@@ -144,6 +146,7 @@
 
     /* Sidebar */
     .side{display:flex; flex-direction:column; gap:18px}
+    .panel{ padding:16px 16px 14px 16px; }
     .panel h3{
       margin:0 0 10px;
       font-size:14px;
@@ -211,21 +214,57 @@
 
   <main class="grid">
     <!-- MAIN -->
-    <section class="card">
-      <h1>Section Archive</h1>
-      <p>
-        This section of <em>Courier Weekly</em> is currently under editorial review.
-        Reports are being verified, cross-checked, and prepared for publication.
-      </p>
-      <p>
-        Selected articles will appear here soon.  
-        In the meantime, readers may return to the front page or consult published notices.
-      </p>
+<section class="card padded" aria-label="Archives main content">
 
-      <p>
-        <a href="index.html" style="color:var(--gold);">← Return to front page</a>
-      </p>
-    </section>
+  <div style="color: var(--accent); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px;">
+    Archives • Selected Records
+  </div>
+
+  <h1 style="font-family: var(--serif); font-size: 34px; line-height: 1.12; margin: 0 0 10px 0;">
+    Courier Weekly Archive
+  </h1>
+
+  <p style="margin:0 0 14px 0; color: var(--muted); max-width: 75ch; font-size: 15px;">
+    Courier Weekly’s digital archive is incomplete. Some early records predate online publication,
+    and certain materials are unavailable due to damaged originals, missing issues, or incomplete indexing.
+  </p>
+
+  <div style="margin-top: 16px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 14px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <h2 style="margin:0; font-size: 14px; letter-spacing: .10em; text-transform: uppercase; color: var(--muted);">
+        2010
+      </h2>
+      <span style="padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); color: var(--muted); font-size: 11px; letter-spacing:.08em; text-transform: uppercase;">
+        Limited records
+      </span>
+    </div>
+
+    <!-- The ONE entry (unclickable on purpose) -->
+    <div style="margin-top: 12px; padding: 12px 12px; border-radius: 14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.16);">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+        <div style="color: var(--soft); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;">
+          25 June 2010
+        </div>
+        <div style="color: var(--soft); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;">
+          Ref: PB-ARCH-2010-0625
+        </div>
+      </div>
+
+      <div style="font-family: var(--serif); font-size: 20px; line-height:1.18; margin-top: 6px; color: var(--ink);">
+        Legendary Courier Vanishes After Bridge Incident
+      </div>
+
+      <div style="margin-top: 8px; color: var(--muted); font-size: 13px; line-height:1.5;">
+        Archive record incomplete. Full text unavailable.
+      </div>
+    </div>
+
+    <div style="margin-top: 12px; color: var(--soft); font-size: 12px; line-height:1.55;">
+      Note: Some materials may be restored to the archive in future as records are verified and digitised.
+    </div>
+  </div>
+
+</section>
 
     <!-- SIDEBAR -->
     <aside class="side">
@@ -259,12 +298,12 @@
     </aside>
   </main>
 
-  <footer>
-    <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
-      <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
-    </a>
-    <p>Published by Lucky 7 Game Studio</p>
-  </footer>
+    <footer>
+      <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
+        <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
+      </a>
+      <p>Published by Lucky 7 Game Studio</p>
+    </footer>
 
 </div>
 </body>
