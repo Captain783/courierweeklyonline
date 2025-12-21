@@ -18,9 +18,10 @@
       --accent:#8bb7ff;
       --accent2:#7dffcf;
       --danger:#ff7d7d;
+      --gold:#cfa44a;
       --radius:18px;
       --shadow: 0 12px 40px rgba(0,0,0,.35);
-      --max: 1100px;
+      --max: 1160px;
       --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
@@ -31,54 +32,45 @@
       font-family: var(--sans);
       color:var(--ink);
       background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.20), transparent 60%),
-        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.12), transparent 55%),
-        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.12), transparent 55%),
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.10), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.10), transparent 55%),
         var(--bg);
       line-height:1.55;
     }
 
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+
+   /* Topbar (LOCKED) */
     .topbar{
-      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       padding:18px 20px;
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(18,23,34,.9), rgba(15,18,23,.9));
       border-radius: var(--radius);
+      background: rgba(18,23,34,.9);
       box-shadow: var(--shadow);
-      position:sticky;
-      top:16px;
-      backdrop-filter: blur(10px);
-      z-index:10;
-    }
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-      letter-spacing:.2px;
     }
     .brand .name{
       font-family: var(--serif);
-      font-weight: 700;
-      font-size: 22px;
-      line-height:1.1;
+      font-size:22px;
+      font-weight:800;
     }
     .brand .tag{
+  font-size:12px;
       color:var(--muted);
-      font-size: 12px;
-    }
+}
     .nav{
-      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      display:flex;
+      gap:14px;
+      font-size:13px;
       color:var(--muted);
-      font-size: 13px;
     }
-    .nav a{
-      text-decoration:none;
-      padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid transparent;
-    }
-    .nav a:hover{border-color: var(--line); color: var(--ink); background: rgba(255,255,255,.03);}
+    .nav a:hover{color:var(--ink)}
 
+    /* Masthead strip */
     .mast{
       margin-top:18px;
       padding:18px 20px;
@@ -86,37 +78,53 @@
       background: rgba(18,23,34,.55);
       border-radius: var(--radius);
     }
-    .mast .kicker{
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-bottom:8px;
-    }
-    .mast h1{
-      margin:0 0 8px 0;
-      font-family: var(--serif);
-      font-size: 34px;
-      line-height: 1.12;
-    }
-    .mast .dek{
-      margin:0;
+
+    /* UK-ish front page vibe: date strip + sections */
+    .strap{
+      display:flex; flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      justify-content:space-between;
       color: var(--muted);
-      max-width: 70ch;
-      font-size: 15px;
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .strap .pill{
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
     }
 
+    /* Layout */
     .grid{
       margin-top:18px;
       display:grid;
-      grid-template-columns: 1.65fr .85fr;
+      grid-template-columns: 1.6fr .9fr;
       gap:18px;
       align-items:start;
     }
-
-    @media (max-width: 920px){
+    @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
       .topbar{position:relative; top:auto}
+    }
+    @media (max-width: 700px){
+      .topbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav{
+        flex-wrap: wrap;
+      }
     }
 
     .card{
@@ -126,6 +134,7 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
+
     .article{
       padding: 18px 18px 10px 18px;
     }
