@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courier Weekly — Poster: Watch Your Step</title>
+  <meta name="description" content="Depot Notice — Safety Reminder: Watch Your Step. Printable poster.">
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --paper:#0f1217;
+      --card:#121722;
+      --ink:#e9eef6;
+      --muted:#b4c0d6;
+      --soft:#7f8aa3;
+      --line:#22304a;
+      --accent:#8bb7ff;
+      --accent2:#7dffcf;
+      --danger:#ff7d7d;
+      --gold:#cfa44a;
+      --radius:18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --max: 1160px;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(139,183,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(125,255,207,.10), transparent 55%),
+        radial-gradient(800px 600px at 20% 120%, rgba(255,125,125,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
+
+    /* Topbar (LOCKED) */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(18,23,34,.9);
+      box-shadow: var(--shadow);
+    }
+    .brand .name{
+      font-family: var(--serif);
+      font-size:22px;
+      font-weight:800;
+    }
+    .brand .tag{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .nav{
+      display:flex;
+      gap:14px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{ text-decoration:none; }
+    .nav a:hover{color:var(--ink)}
+
+    /* Masthead strip */
+    .mast{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px dashed rgba(139,183,255,.35);
+      background: rgba(18,23,34,.55);
+      border-radius: var(--radius);
+    }
+
+    /* Layout */
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.6fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:auto}
+    }
+    @media (max-width: 700px){
+      .topbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav{
+        flex-wrap: wrap;
+      }
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(18,23,34,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.padded{ padding:18px; }
+
+    /* Sidebar */
+    .side{display:flex; flex-direction:column; gap:18px}
+    .panel{ padding:16px 16px 14px 16px; }
+    .panel h3{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      text-decoration:none;
+      font-size: 13px;
+      font-weight: 700;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(255,255,255,.07);}
+    .btn.primary{
+      border-color: rgba(139,183,255,.45);
+      background: rgba(139,183,255,.10);
+    }
+    .btn.primary:hover{background: rgba(139,183,255,.14);}
+
+    /* Poster styling */
+    .kicker{
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .poster{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: rgba(0,0,0,.16);
+      padding:18px;
+    }
+    .poster .head{
+      font-family: var(--serif);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .poster .title{
+      font-family: var(--serif);
+      font-size: 44px;
+      line-height: 1.05;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
+    .poster .sub{
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 14px 0;
+      max-width: 70ch;
+    }
+    .poster ul{
+      margin: 10px 0 12px 20px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .poster .boldline{
+      margin-top: 12px;
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing:.06em;
+      color: var(--ink);
+    }
+    .poster .tagline{
+      margin-top: 10px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+    .poster .ref{
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing:.08em;
+    }
+
+    footer{
+      margin-top:18px;
+      padding:18px 0;
+      border-top:1px solid rgba(255,255,255,.1);
+      text-align:center;
+      color:#777;
+    }
+    footer img{
+      max-width:160px;
+      opacity:.85;
+    }
+    footer p{
+      margin: 10px 0 0;
+      font-size: 0.85em;
+    }
+
+    /* Print */
+    @media print{
+      body{background:#fff; color:#111}
+      .topbar, .mast, .side, footer{display:none}
+      .wrap{max-width: 100%; padding:0}
+      .grid{grid-template-columns:1fr}
+      .card{box-shadow:none; border:none; background:#fff}
+      .poster{border:2px solid #111; background:#fff}
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="topbar" aria-label="Courier Weekly header">
+    <div class="brand">
+      <div class="name">Courier Weekly</div>
+      <div class="tag">Local deliveries. Local drama. Verified where possible.</div>
+    </div>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="local.html">Local</a>
+      <a href="business.html">Business</a>
+      <a href="investigations.html">Investigations</a>
+      <a href="archives.html">Archives</a>
+      <a href="notices.html">Notices</a>
+    </nav>
+  </header>
+
+  <section class="mast" aria-label="Site masthead">
+    <img src="assets/courier_weekly_logo.png" alt="The Courier Weekly" style="max-width:100%; height:auto;">
+  </section>
+
+  <main class="grid" role="main">
+    <!-- MAIN -->
+    <section class="card padded" aria-label="Printable poster">
+      <div class="kicker">Depot Notice • Safety Reminder • Printable</div>
+
+      <div class="poster" role="article" aria-label="Poster content">
+        <div class="head">DEPOT NOTICE — SAFETY REMINDER</div>
+        <h1 class="title">WATCH YOUR STEP</h1>
+        <p class="sub">
+          Trips, slips and falls are a leading cause of injury and… <em>unexpected parcel flattening</em>.
+        </p>
+
+        <div class="boldline">Remember:</div>
+        <ul>
+          <li>Keep walkways clear</li>
+          <li>Don’t rush around corners</li>
+          <li>Look where your feet are going</li>
+        </ul>
+
+        <div class="boldline">Parcels are not crash mats.</div>
+        <div class="boldline">Plush toys are not impact-rated.</div>
+
+        <p class="tagline"><strong>Think safe. Walk safe. Leave Mr Huggy Bear out of it.</strong></p>
+
+        <div class="ref">
+          <span>Ref: CW-HS-POST-001</span>
+          <span>Issued: Internal</span>
+          <span>Display: Notice Board</span>
+        </div>
+      </div>
+
+      <div class="btnrow" aria-label="Poster actions">
+        <button class="btn primary" onclick="window.print()">Print this poster</button>
+        <a class="btn" href="notices.html">Back to Notices</a>
+      </div>
+    </section>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Sidebar">
+      <section class="card panel">
+        <h3>Placement Guidance</h3>
+        <p style="margin:0; color: var(--muted); font-size: 13px; line-height:1.55;">
+          Recommended: staff entrance, Bay briefings board, and anywhere a person has ever said
+          “I’ll be careful this time.”
+        </p>
+      </section>
+
+      <section class="card panel">
+        <h3>Related</h3>
+        <p style="margin:0; font-size:13px;">
+          <a href="local-squashed-parcel-huggy-bear.html" style="color:var(--gold); text-decoration:none;">
+            Local: Mr Huggy Bear Incident Report
+          </a>
+        </p>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
+      <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
+    </a>
+    <p>Published by Lucky 7 Game Studio</p>
+  </footer>
+
+</div>
+</body>
+</html>
