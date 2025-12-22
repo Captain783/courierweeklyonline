@@ -41,7 +41,7 @@
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
 
-   /* Topbar (LOCKED) */
+    /* Topbar (LOCKED) */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -58,9 +58,9 @@
       font-weight:800;
     }
     .brand .tag{
-  font-size:12px;
+      font-size:12px;
       color:var(--muted);
-}
+    }
     .nav{
       display:flex;
       gap:14px;
@@ -76,31 +76,6 @@
       border:1px dashed rgba(139,183,255,.35);
       background: rgba(18,23,34,.55);
       border-radius: var(--radius);
-    }
-
-    /* UK-ish front page vibe: date strip + sections */
-    .strap{
-      display:flex; flex-wrap:wrap;
-      gap:10px 14px;
-      align-items:center;
-      justify-content:space-between;
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing:.08em;
-      text-transform: uppercase;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .strap .pill{
-      padding:6px 10px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      background: rgba(255,255,255,.03);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: 11px;
-      color: var(--muted);
     }
 
     /* Layout */
@@ -133,7 +108,6 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-
     .card.padded{ padding:18px; }
 
     h1{
@@ -141,7 +115,6 @@
       font-size:32px;
       margin:0 0 10px;
     }
-
     p{color:var(--muted)}
 
     /* Sidebar */
@@ -172,6 +145,90 @@
     .board p{
       margin:0;
       font-size:13px;
+      color: var(--muted);
+    }
+
+    /* Notices index entries (Archives-style) */
+    .index-topline{
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .subnote{
+      margin:0 0 14px 0;
+      color: var(--muted);
+      max-width: 75ch;
+      font-size: 15px;
+    }
+    .divider{
+      margin-top:16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 14px;
+    }
+    .rowhead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .rowhead h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+
+    .entry{
+      display:block;
+      text-decoration:none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+    }
+    .entry:hover{
+      border-color: rgba(139,183,255,.22);
+      background: rgba(255,255,255,.04);
+    }
+    .entry-top{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+    .entry-title{
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height:1.18;
+      margin-top: 6px;
+      color: var(--ink);
+    }
+    .entry-desc{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
     }
 
     footer{
@@ -214,25 +271,70 @@
 
   <main class="grid">
     <!-- MAIN -->
-    <section class="card padded" aria-label="Section placeholder">
-      <div style="color: var(--accent); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px;">
-        Section • Under Editorial Review
-      </div>
+    <section class="card padded" aria-label="Notices index">
+      <div class="index-topline">Notices • Bulletins • Posters</div>
 
       <h1 style="font-family: var(--serif); font-size: 34px; line-height: 1.12; margin: 0 0 10px 0;">
-        <!-- CHANGE THIS PER PAGE -->
-        Notices
+        Notices Index
       </h1>
 
-      <p style="margin:0 0 14px 0; color: var(--muted); max-width: 75ch; font-size: 15px;">
-        This section of <em>Courier Weekly</em> is currently under editorial review. Reports are being verified,
-        cross-checked, and prepared for publication.
+      <p class="subnote">
+        Official bulletins, depot notices, and “someone-printed-this-and-walked-away” posters.
+        Items may be added, withdrawn, or replaced without warning (usually because the printer demanded cyan).
       </p>
 
-      <p style="margin:0 0 14px 0; color: var(--muted); max-width: 75ch; font-size: 15px;">
-        Selected articles will appear here soon. In the meantime, readers may return to the front page
-        or consult published notices.
-      </p>
+      <div class="divider">
+        <div class="rowhead">
+          <h2>Active</h2>
+          <span class="pill">Live items</span>
+        </div>
+
+        <!-- Official notice -->
+        <a class="entry" href="watch-your-step.html" aria-label="Open notice: Watch Your Step">
+          <div class="entry-top">
+            <div>Public Notice</div>
+            <div>Ref: CW-NOTICE-HS-01 • Active</div>
+          </div>
+          <div class="entry-title">Watch Your Step: Bay Floor Safety Reminder</div>
+          <div class="entry-desc">
+            Near-miss reporting guidance, walkways, and a reminder that pallets do not count as “temporary furniture.”
+          </div>
+        </a>
+
+        <!-- Related notice page you already have -->
+        <a class="entry" href="notices-health-safety.html" aria-label="Open bulletin: Near-Miss Reporting & Bay Rules">
+          <div class="entry-top">
+            <div>Safety Bulletin</div>
+            <div>Ref: CW-NOTICE-2025-12-19-HS01 • Active</div>
+          </div>
+          <div class="entry-title">Near-Miss Reporting &amp; Bay Rules</div>
+          <div class="entry-desc">
+            A formal bulletin for supervisors, drivers, and anyone who has ever said “that was close” and carried on anyway.
+          </div>
+        </a>
+      </div>
+
+      <div class="divider">
+        <div class="rowhead">
+          <h2>Related reports</h2>
+          <span class="pill">Filed as “workplace incident”</span>
+        </div>
+
+        <a class="entry" href="mr-huggy-bear.html" aria-label="Open report: Mr Huggy Bear">
+          <div class="entry-top">
+            <div>Incident Report</div>
+            <div>Ref: CW-INC-LOCAL-01 • Filed</div>
+          </div>
+          <div class="entry-title">Mr Huggy Bear Was “Not Happy About Being Landed On”</div>
+          <div class="entry-desc">
+            A parcel, a trip, a witness statement that somehow blames gravity… and one plush casualty with a lot to say.
+          </div>
+        </a>
+
+        <p style="margin-top: 12px; color: var(--soft); font-size: 12px; line-height:1.55;">
+          Note: The Notices Index is intentionally incomplete. Some posters are “distributed” before they are… logged.
+        </p>
+      </div>
 
       <div style="margin-top: 18px;">
         <a href="index.html" style="color: var(--gold); text-decoration:none;">
@@ -265,28 +367,35 @@
       <section class="card panel">
         <h3>From the Desk</h3>
         <p style="margin:0; color: var(--muted); font-size: 13px; line-height:1.55;">
-          Some reports take longer than they should. This is usually the printer’s fault.
+          Notices are posted when required. Posters are posted when nobody is looking.
         </p>
       </section>
 
       <section class="card panel">
         <h3>Public Notices</h3>
-        <p style="margin:0; font-size:13px;">
-          <a href="notices-health-safety.html" style="color:var(--gold); text-decoration:none;">
-            Safety Bulletin: Near-Miss Reporting
+        <p style="margin:0 0 10px 0; font-size:13px;">
+          <a href="watch-your-step.html" style="color:var(--gold); text-decoration:none;">
+            Official Notice: Watch Your Step
           </a>
         </p>
+        <p style="margin:0; font-size:13px;">
+          <a href="watch-your-step-2.html" style="color:var(--gold); text-decoration:none;">
+            Poster (Unverified): “Watch Your Step”
+          </a><br>
+          <span style="color: var(--soft); font-size: 12px;">
+            (This one was “accidentally” published.)
+          </span>
+        </p>
       </section>
-
     </aside>
   </main>
 
-    <footer>
-      <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
-        <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
-      </a>
-      <p>Published by Lucky 7 Game Studio</p>
-    </footer>
+  <footer>
+    <a href="https://lucky7gamestudio.com" target="_blank" rel="noopener">
+      <img src="assets/lucky_7_games_logo.png" alt="Lucky 7 Game Studio">
+    </a>
+    <p>Published by Lucky 7 Game Studio</p>
+  </footer>
 
 </div>
 </body>
